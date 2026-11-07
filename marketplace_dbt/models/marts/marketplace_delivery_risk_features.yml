@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: marketplace_delivery_risk_features
+    description: "Order-level features and historical delivery labels for marketplace delivery-risk modeling."
+
+    columns:
+      - name: order_id
+        description: "Unique order identifier."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Customer identifier associated with the order."
+        data_tests:
+          - not_null
+
+      - name: purchase_date
+        description: "Calendar date of the order purchase."
+        data_tests:
+          - not_null
+
+      - name: promised_delivery_days
+        description: "Number of days between purchase and estimated delivery."
+        data_tests:
+          - not_null
+
+      - name: is_late_delivery
+        description: "Historical delivery outcome: 1 for late and 0 for on time."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]

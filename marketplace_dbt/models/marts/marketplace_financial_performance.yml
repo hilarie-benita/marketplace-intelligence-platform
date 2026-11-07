@@ -1,0 +1,13 @@
+
+version: 2
+
+models:
+  - name: marketplace_financial_performance
+    description: "Monthly marketplace financial performance, including payments, merchandise, freight, and reconciliation outcomes."
+
+    columns:
+      - name: order_month
+        description: "Calendar month of order purchase."
+        data_tests:
+          - not_null
+          - unique

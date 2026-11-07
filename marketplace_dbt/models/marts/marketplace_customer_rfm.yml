@@ -1,0 +1,41 @@
+
+version: 2
+
+models:
+  - name: marketplace_customer_rfm
+    description: "Customer-level recency, frequency, monetary analysis with RFM scores and behavioral segments."
+
+    columns:
+      - name: customer_unique_id
+        description: "Unique identifier for an individual customer."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: recency_days
+        description: "Days since the customer's last purchase, relative to the dataset snapshot date."
+        data_tests:
+          - not_null
+
+      - name: frequency
+        description: "Number of orders placed by the customer."
+        data_tests:
+          - not_null
+
+      - name: monetary_value
+        description: "Recorded merchandise value associated with the customer."
+        data_tests:
+          - not_null
+
+      - name: rfm_segment
+        description: "Customer segment assigned using RFM business rules."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - High-Value Repeat
+                  - Repeat Customer
+                  - Recently Active
+                  - Long-Inactive
+                  - Occasional Customer

@@ -1,0 +1,31 @@
+
+version: 2
+
+sources:
+  - name: gold
+    schema: gold
+    description: "Validated Gold-layer dimensional and fact tables from the Marketplace Intelligence Platform."
+    tables:
+      - name: dim_customers
+        description: "Customer dimension."
+
+      - name: dim_products
+        description: "Product dimension."
+
+      - name: dim_sellers
+        description: "Seller dimension."
+
+      - name: dim_dates
+        description: "Date dimension."
+
+      - name: fact_orders
+        description: "Order-level transaction facts."
+
+      - name: fact_order_items
+        description: "Order-item-level transaction facts."
+
+      - name: fact_payments
+        description: "Payment transaction facts."
+
+      - name: fact_reviews
+        description: "Customer review facts."

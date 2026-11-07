@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: marketplace_delivery_experience
+    description: "Delivery performance and customer satisfaction by delivery category."
+
+    columns:
+      - name: delivery_category
+        description: "Delivery classification for marketplace orders."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Number of orders in the delivery category."
+        data_tests:
+          - not_null
+
+      - name: reviewed_orders
+        description: "Number of distinct orders with reviews."
+        data_tests:
+          - not_null
+
+      - name: total_reviews
+        description: "Number of review records associated with orders in the category."
+        data_tests:
+          - not_null

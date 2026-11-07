@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: marketplace_customer_performance
+    description: "Customer-level purchasing behavior, order frequency, merchandise value, delivery outcomes, and customer segmentation."
+
+    columns:
+      - name: customer_unique_id
+        description: "Unique identifier representing an individual customer."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Number of orders placed by the customer."
+        data_tests:
+          - not_null
+
+      - name: customer_segment
+        description: "Customer classification based on purchase frequency."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - One-Time Customer
+                  - Repeat Customer

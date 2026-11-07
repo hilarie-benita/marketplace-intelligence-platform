@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: marketplace_order_performance
+    description: "Monthly marketplace order performance, including delivery outcomes and operational metrics."
+
+    columns:
+      - name: order_month
+        description: "Calendar month of the order purchase."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Total orders purchased during the month."
+        data_tests:
+          - not_null
+
+      - name: delivered_orders
+        description: "Orders successfully delivered."
+        data_tests:
+          - not_null

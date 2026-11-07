@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: marketplace_seller_performance
+    description: "Seller-level marketplace performance, including order volumes, merchandise value, freight, and delivery outcomes."
+
+    columns:
+      - name: seller_id
+        description: "Unique seller identifier."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Number of distinct orders associated with the seller."
+        data_tests:
+          - not_null
+
+      - name: total_merchandise_value
+        description: "Total recorded merchandise value associated with the seller."
+        data_tests:
+          - not_null

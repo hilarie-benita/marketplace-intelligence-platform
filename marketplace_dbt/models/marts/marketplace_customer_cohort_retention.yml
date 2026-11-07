@@ -1,0 +1,32 @@
+
+version: 2
+
+models:
+  - name: marketplace_customer_cohort_retention
+    description: "Monthly noncumulative customer retention by first-purchase cohort."
+
+    columns:
+      - name: cohort_month
+        description: "Month of the customer's first recorded purchase."
+        data_tests:
+          - not_null
+
+      - name: months_since_first_purchase
+        description: "Number of calendar months since the cohort's first purchase."
+        data_tests:
+          - not_null
+
+      - name: cohort_size
+        description: "Number of unique customers in the original cohort."
+        data_tests:
+          - not_null
+
+      - name: active_customers
+        description: "Number of cohort customers purchasing during the specified month."
+        data_tests:
+          - not_null
+
+      - name: retention_rate_pct
+        description: "Percentage of the original cohort active in the specified month."
+        data_tests:
+          - not_null

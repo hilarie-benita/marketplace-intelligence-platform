@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: marketplace_category_performance
+    description: "Category-level marketplace performance, including sales volume, product and seller coverage, merchandise value, freight, and delivery outcomes."
+
+    columns:
+      - name: product_category
+        description: "English product category or Unknown for uncategorized products."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_items_sold
+        description: "Number of order items sold within the category."
+        data_tests:
+          - not_null
+
+      - name: total_orders
+        description: "Number of distinct orders containing products in the category."
+        data_tests:
+          - not_null
+
+      - name: merchandise_value
+        description: "Total recorded merchandise value for the category."
+        data_tests:
+          - not_null
