@@ -63,8 +63,6 @@ python scripts/ingest_bronze.py
 The ingestion process requires all nine source CSV files
 to be present in `data/raw/`.
 
-## Silver Layer — Cleaning and Standardization
-
 
 ## Silver Layer — Cleaning, Standardization & Data Quality
 
