@@ -236,14 +236,112 @@ performance, customer segmentation, cohort retention,
 seller performance, financial analysis, and delivery analytics.
 
 
-## Analytics Engineering
+## Analytical Warehouse — DuckDB
 
-Gold-layer Parquet datasets are exposed through DuckDB
-and transformed into analytical models using dbt Core.
+**Implementation:** `scripts/setup_duckdb.py`
 
-The implementation includes nine analytical models
-and 52 automated dbt tests.
+DuckDB provides the SQL analytical layer between the
+Gold Medallion layer and dbt.
 
-See `marketplace_dbt/` for model definitions,
-tests, and documentation.
+### Warehouse Design
+
+The warehouse uses DuckDB views over Gold-layer Parquet
+datasets rather than duplicating the data into physical
+warehouse tables.
+
+The setup process:
+
+1. Creates the local warehouse directory.
+2. Initializes the DuckDB database.
+3. Creates the `gold` schema.
+4. Registers eight Gold datasets as SQL views.
+5. Verifies view availability and row counts.
+6. Executes a sample analytical SQL query.
+
+### Initialize the Warehouse
+
+From the project root:
+
+```bash
+python scripts/setup_duckdb.py
 ```
+
+Database location:
+
+`data/warehouse/marketplace.duckdb`
+
+The database is generated locally and is not committed
+to GitHub.
+
+## Analytics Engineering — dbt Core
+
+**Implementation:** `marketplace_dbt/`
+
+dbt transforms the Gold-layer warehouse views into
+business-oriented analytical models.
+
+### Analytical Models
+
+The project includes nine dbt models covering:
+
+- Order performance
+- Financial performance and reconciliation
+- Seller performance
+- Customer performance
+- Product category performance
+- Customer RFM segmentation
+- Customer cohort retention
+- Delivery experience
+- Delivery-risk feature engineering
+
+### Automated Testing
+
+The dbt project contains 52 automated tests.
+
+The validated build completed successfully:
+
+- 9 analytical models
+- 52 automated tests
+- 61 successful resources
+- 0 errors
+
+### Data Lineage
+
+dbt documentation provides a dependency graph connecting
+Gold-layer sources, analytical models, and integrity tests.
+
+The lineage graph is available in the main project README.
+
+### Run dbt
+
+After initializing DuckDB, navigate to the dbt directory:
+
+```bash
+cd marketplace_dbt
+```
+
+Run the models and tests:
+
+```bash
+dbt build
+```
+
+Generate documentation:
+
+```bash
+dbt docs generate
+```
+
+Launch the documentation website:
+
+```bash
+dbt docs serve --port 8080
+```
+
+The documentation will be accessible locally at:
+
+`http://localhost:8080`
+
+A local dbt profile must be configured before running
+these commands. See `profiles.yml.example` for the
+required connection settings.
